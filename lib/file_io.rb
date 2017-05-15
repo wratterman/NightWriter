@@ -1,15 +1,18 @@
-class FileIO
+# class FileInput
+#
+#   def input_file_reader
+#     message = File.open(ARGV[0], 'r')
+#     message_array = []
+#     message.each_line do |character|
+#       message_array << character
+#     end
+#     #input_converter(message)
+#     message.close
+#     to_convert = message_array.join(" ")
+#   end
+# end
 
-  def input_file_reader
-    message = File.open(ARGV[0], 'r')
-    message_array = []
-    message.each_line do |character|
-      message_array << character
-    end
-    #input_converter(message)
-    message.close
-    to_convert = message_array.join(" ")
-  end
+class FileOutput
 
   def output_file_writer(translation)
     output = File.open(ARGV[1], 'w')
