@@ -3,15 +3,15 @@ require 'pry'
 
 class FileInput
 
-  def read
+  def
     message = ARGV[0]
     File.read(message)
   end
 
   def length
     message = ARGV[0]
-    string = File.open(message, "r")
-    string.to_s.length
+    string = File.read(message)
+    string.length
   end
 end
 
@@ -39,4 +39,4 @@ end
 
 a = NightRead.new
 puts a.print_message
-binding.pry
+# binding.pry

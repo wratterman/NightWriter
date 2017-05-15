@@ -29,12 +29,12 @@ class NightReadTest < Minitest::Test
     assert_equal expected, actual
   end
 
-  # def test_is_input_pulling_the_length_of_the_internal_text_information
-  #   a = NightRead.new
-  #   expected = 24
-  #   actual = a.file_length
-  #
-  #   assert_equal expected, actual
-  # end
+  def test_is_input_pulling_the_length_of_the_internal_text_information
+    a = NightRead.new
+    expected = 24
+    actual = a.file_length
+
+    assert_equal expected, actual
+  end
 
 end
