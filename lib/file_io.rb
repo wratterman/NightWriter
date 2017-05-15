@@ -12,6 +12,20 @@
 #   end
 # end
 
+class FileInput
+
+  def read
+    message = ARGV[0]
+    File.read(message)
+  end
+
+  def length
+    message = ARGV[0]
+    string = File.read(message)
+    string.length
+  end
+end
+
 class FileOutput
 
   def output_file_writer(translation)
