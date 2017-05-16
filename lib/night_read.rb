@@ -1,38 +1,20 @@
-require 'pry'
 require "./lib/file_io"
 require "./lib/alphabet_hash"
 
-
 class NightRead
-  attr_reader :input, :to_translate, :info, :translated
+  attr_reader :input, :to_translate, :info, :translated, :file_length
 
   def initialize
     @input = FileInput.new
+    @file_length = input.length
     @to_translate = AlphabetHash.new
     @info = input.read.chomp.strip
     @translated = translated
   end
 
-  # def encode_to_braille
-  #   text = input.read
-  #   braille = encode_to_braille(text)
-  # end
-
   def print_message
     "You created 'braille.txt' that has #{file_length} characters!"
   end
-
-  def file_length
-    input.length
-  end
-
-  # def braille_alphabet
-  #   translated = []
-  #   to_translate.alphabet.each do |letter|
-  #     translated << to_translate.alphabet[letter]
-  #   end
-  #   translated
-  # end
 
   def translated_string
     translated = []
@@ -42,7 +24,7 @@ class NightRead
     @translated = translated.compact
   end
 
-  def seperating_to_first_row
+  def first_row
     first_row = []
     translated.each do |letter|
       first_row << letter[0]
@@ -50,7 +32,7 @@ class NightRead
     first_row
   end
 
-  def seperating_to_second_row
+  def second_row
     second_row = []
     translated.each do |letter|
       second_row << letter[1]
@@ -58,7 +40,7 @@ class NightRead
     second_row
   end
 
-  def seperating_to_third_row
+  def third_row
     third_row = []
     translated.each do |letter|
       third_row << letter[2]
@@ -67,9 +49,7 @@ class NightRead
   end
 
   def formatted_translation
-    print seperating_to_first_row.join("") + "\n" + seperating_to_second_row.join("") + "\n" + seperating_to_third_row.join("")
+    translated_string
+    first_row.join("") + "\n" + second_row.join("") + "\n" + third_row.join("")
   end
 end
-
-a = NightRead.new
-puts a.print_message

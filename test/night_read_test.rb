@@ -2,8 +2,6 @@ require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
 require "./lib/night_read"
-require "./lib/alphabet_hash"
-
 
 class NightReadTest < Minitest::Test
 
@@ -15,10 +13,41 @@ class NightReadTest < Minitest::Test
     assert_equal expected, actual
   end
 
-  def test_does_it_print_the_correct_message_to_terminal
-    skip
+  def test_is_input_an_inherent_quality_of_NightRead_with_value
     a = NightRead.new
-    expected = "You created 'braille.txt' that has 47 characters!"
+    expected = nil
+    actual = a.input
+
+    refute_equal expected, actual
+  end
+
+  def test_is_to_translate_an_inherent_quality_of_NightRead_with_value
+    a = NightRead.new
+    expected = nil
+    actual = a.to_translate
+
+    refute_equal expected, actual
+  end
+
+  def test_is_info_an_inherent_quality_of_NightRead_with_value
+    a = NightRead.new
+    expected = nil
+    actual = a.info
+
+    refute_equal expected, actual
+  end
+
+  def test_is_tranlated_nil_initially
+    a = NightRead.new
+    expected = nil
+    actual = a.translated
+
+    assert_nil expected, actual
+  end
+
+  def test_does_it_print_the_correct_message_to_terminal
+    a = NightRead.new
+    expected = "You created 'braille.txt' that has 6 characters!"
     actual = a.print_message
 
     assert_equal expected, actual
@@ -48,26 +77,15 @@ class NightReadTest < Minitest::Test
     assert_equal expected, actual
   end
 
-  def test_does_alphabet_a_return_the_braille_version_of_blind_people_a
-    skip
-    a = NightRead.new
-    expected = ["0.", "..", ".."]
-    actual = a.translate
-
-    assert_equal expected, actual
-  end
-
   def test_does_translate_return_an_array_with_the_correct_number_of_key_value_pairs
-    skip
     a = NightRead.new
-    expected = 68
-    actual = a.translate.length
+    expected = 5
+    actual = a.translated_string.length
 
     assert_equal expected, actual
   end
 
   def test_does_it_translate_the_string_from_date_file
-    skip
     a = NightRead.new
     expected = [[".0", "00", "0."], ["0.", "..", ".."], ["00", "..", ".."], ["0.", ".0", "0."], [".0", "0.", "0."]]
     actual = a.translated_string
@@ -75,10 +93,37 @@ class NightReadTest < Minitest::Test
     assert_equal expected, actual
   end
 
-  def test_does_it_split_into_3_vertical_sections_per_letter
+  def test_does_it_sort_the_first_index_of_translated_string_to_top_row
     a = NightRead.new
     a.translated_string
-    expected = "0.....0.0."
+    expected = [".0", "0.", "00", "0.", ".0"]
+    actual = a.first_row
+
+    assert_equal expected, actual
+  end
+
+  def test_does_it_sort_the_first_index_of_translated_string_to_middle_row
+    a = NightRead.new
+    a.translated_string
+    expected = ["00", "..", "..", ".0", "0."]
+    actual = a.second_row
+
+    assert_equal expected, actual
+  end
+
+  def test_does_it_sort_the_third_index_of_translated_string_to_bottom_row
+    a = NightRead.new
+    a.translated_string
+    expected = ["0.", "..", "..", "0.", "0."]
+    actual = a.third_row
+
+    assert_equal expected, actual
+  end
+
+  def test_does_it_print_to_terimal_in_correct_format
+    a = NightRead.new
+    a.translated_string
+    expected = ".00.000..0\n00.....00.\n0.....0.0."
     actual = a.formatted_translation
 
     assert_equal expected, actual
