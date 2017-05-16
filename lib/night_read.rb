@@ -48,8 +48,4 @@ class NightRead
     end
     third_row
   end
-
-  def print_message
-    "You created 'braille.txt' that has #{file_length} characters!"
-  end
 end

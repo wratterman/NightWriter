@@ -45,13 +45,13 @@ class NightReadTest < Minitest::Test
     assert_nil expected, actual
   end
 
-  def test_does_it_print_the_correct_message_to_terminal
-    a = NightRead.new
-    expected = "You created 'braille.txt' that has 6 characters!"
-    actual = a.print_message
-
-    assert_equal expected, actual
-  end
+  # def test_does_it_print_the_correct_message_to_terminal
+  #   a = NightRead.new
+  #   expected = "You created 'braille.txt' that has 6 characters!"
+  #   actual = a.print_message
+  #
+  #   assert_equal expected, actual
+  # end
 
   def test_is_input_a_state_of_FileInput_class_from_file_io
     a = NightRead.new
