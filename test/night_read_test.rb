@@ -102,7 +102,7 @@ class NightReadTest < Minitest::Test
     assert_equal expected, actual
   end
 
-  def test_does_it_sort_the_first_index_of_translated_string_to_middle_row
+  def test_does_it_sort_the_second_index_of_translated_string_to_middle_row
     a = NightRead.new
     a.translated_string
     expected = ["00", "..", "..", ".0", "0."]

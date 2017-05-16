@@ -12,8 +12,9 @@ class NightRead
     @translated = translated
   end
 
-  def print_message
-    "You created 'braille.txt' that has #{file_length} characters!"
+  def formatted_translation
+    translated_string
+    returned = first_row.join("") + "\n" + second_row.join("") + "\n" + third_row.join("")
   end
 
   def translated_string
@@ -48,8 +49,7 @@ class NightRead
     third_row
   end
 
-  def formatted_translation
-    translated_string
-    first_row.join("") + "\n" + second_row.join("") + "\n" + third_row.join("")
+  def print_message
+    "You created 'braille.txt' that has #{file_length} characters!"
   end
 end
