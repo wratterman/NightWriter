@@ -93,25 +93,33 @@ class NightReadBrailleTest < Minitest::Test
 
   def test_can_input_be_separated_into_arrays
     a = NightReadBraille.new
-    expected = [".00.000..0", "00.....00.", "0.....0.0."]
+    expected = [[".0", "0.", "00", "0.", ".0"], ["00", "..", "..", ".0", "0."], ["0.", "..", "..", "0.", "0."]]
     actual = a.split_by_line
 
     assert_equal(expected, actual)
   end
-
-  # def test_it_reads_other_files
-  #   a = NightReadBraille.new
-  #   expected = "cat"
-  #   actual = a.info
   #
-  #   assert_equal(expected, actual)
-  # end
+  def test_it_stores_each_line_by_index
+    a = NightReadBraille.new
+    expected = [[".0", "00", "0."], ["0.", "..", ".."], ["00", "..", ".."], ["0.", ".0", "0."], [".0", "0.", "0."]]
+    actual = a.group_letters
 
-  # def test_if_another_method_has_access_to_file_io
-  #   a = NightReadBraille.new
-  #   actual = a.temporary_method
-  #
-  #   assert_instance_of FileInput, actual
-  # end
+    assert_equal(expected, actual)
+  end
 
+  def test_it_translated_to_english
+    a = NightReadBraille.new
+    expected = "tacos"
+    actual = a.translated
+
+    assert_equal(expected, actual)
+  end
+
+  def test_it_translated_to_english_from_ready_to_write
+    a = NightReadBraille.new
+    expected = "tacos"
+    actual = a.ready_to_write
+
+    assert_equal(expected, actual)
+  end
 end
