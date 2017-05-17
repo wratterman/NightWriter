@@ -13,11 +13,11 @@ class NightRead
   end
 
   def formatted_translation
-    translated_string
+    translated_array
     returned = first_row.join("") + "\n" + second_row.join("") + "\n" + third_row.join("")
   end
 
-  def translated_string
+  def translated_array
     translated = []
     info.each_char do |letter|
       translated << to_translate.alphabet[letter]
